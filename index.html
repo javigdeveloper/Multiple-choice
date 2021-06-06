@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple choice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="myBody">
+    <!-- to be hidden: -->
+    <div id="teacherControls" class="teacherControlsClass">
+      <textarea id="initialArea" cols="50" rows="15"></textarea>
+      <p>Type or paste initial text to be edited.</p>
+      <button id="teacherBtn">Start editing</button>
+    </div>
+    <!-- paragraph -->
+    <h1 id="instructions" class="instructionsClass"></h1>
+    <p id="myParaId" class="myParaClass pointerClass"></p>
+    <!-- editing fields -->
+    <div class="hide inputsClass" id="inputsId">
+      <p>Type alternative options. The program will randomly select a position for the correct answer.</p>
+      <div class="innerDiv">
+        <input id="correctInput" type="text" />
+        <span>correct option</span>
+      </div>
+      <div class="innerDiv">
+        <input class="altOptions" type="text" />
+      </div>
+      <div class="innerDiv">
+        <input class="altOptions" type="text" />
+      </div>
+      <div class="innerDiv">
+        <input class="altOptions" type="text" />
+      </div>
+      <div>
+        <input type="checkbox" id="newLine" />
+        <label for="newLine">Move text to a new line after this word</label>
+      </div>
+      <button id="optionsBtn" class="optionsBtnClass">Enter options</button>
+    </div>
+
+    <div class="hide toExerciseClass" id="goToExerciseId">
+      <p>When you're done editing the words, click on the GO TO EXERCISE button to change to student view.</p>
+      <button id="goToExerciseBtn" class="goToExerciseBtnClass">GO TO EXERCISE</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+* {
+  font-size: 22px;
+}
+.teacherControlsClass {
+  margin: auto;
+  width: 50%;
+}
+.teacherControlsClass textarea {
+  margin-top: 50px;
+  padding: 20px;
+}
+.teacherControlsClass p {
+  font-size: 13px;
+}
+.teacherControlsClass button,
+.optionsBtnClass,
+.goToExerciseBtnClass {
+  box-shadow: 5px 5px 5px grey;
+}
+.teacherControlsClass button:hover,
+.optionsBtnClass:hover,
+.goToExerciseBtnClass:hover {
+  font-size: 23px;
+  cursor: pointer;
+}
+.instructionsClass {
+  font-size: 26px;
+  text-align: center;
+}
+.myParaClass {
+  padding: 40px;
+}
+.myParaClass span {
+  margin: 2px;
+  line-height: 30px;
+}
+.pointerClass span {
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.inputsClass {
+  padding: 0 40px;
+  border-top: 2px solid;
+}
+.innerDiv {
+  margin: 5px 0;
+}
+.innerDiv span {
+  color: rgb(103, 228, 103);
+}
+.optionsBtnClass {
+  margin-top: 20px;
+}
+.toExerciseClass {
+  margin-top: 60px;
+  padding: 0 40px;
+}
+.correct {
+  background-color: rgb(103, 228, 103);
+}
+select {
+  margin: 5px 2px 5px 2px;
+}
