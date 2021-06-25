@@ -7,15 +7,22 @@ const inputs = document.getElementById("inputsId");
 const optionsBtn = document.getElementById("optionsBtn");
 const goToExercise = document.getElementById("goToExerciseId");
 const goToExerciseBtn = document.getElementById("goToExerciseBtn");
-const newLine = document.getElementById("newLine");
+// const newLine = document.getElementById("newLine");
 let clickedSpan = false;
 
-// add a span for each word...
+// add span for each word and br for new lines...
 const transformText = (str) => {
-  const myArr = str.split(/\s+/);
+  const singleSpace = str.split(" ");
   const myHtmlArr = [];
-  myArr.forEach((element) => {
-    myHtmlArr.push(`<span>${element}</span>`);
+  singleSpace.forEach((el) => {
+    if (el.includes("\n")) {
+      let innerArr = el.split("\n");
+      innerArr.forEach((item) => {
+        item == "" ? myHtmlArr.push("<br>") : myHtmlArr.push(`<span>${item}</span><br>`);
+      });
+    } else {
+      myHtmlArr.push(`<span>${el}</span>`);
+    }
   });
   paragraph.innerHTML = myHtmlArr.join(" ");
 };
@@ -64,25 +71,13 @@ optionsBtn.addEventListener("click", () => {
 
   optionValues.splice(answerIndex, 0, correctInput.value);
 
-  // checkbox that adds a div to move text to the next line...
-  if (newLine.checked) {
-    temporaryId.outerHTML = `<select data-a-index="${answerIndex + 1}">
-      <option></option>
-      <option>${optionValues[0]}</option>
-      <option>${optionValues[1]}</option>
-      <option>${optionValues[2]}</option>
-      <option>${optionValues[3]}</option>
-      </select>
-    <div></div>`;
-  } else {
-    temporaryId.outerHTML = `<select data-a-index="${answerIndex + 1}">
+  temporaryId.outerHTML = `<select data-a-index="${answerIndex + 1}">
     <option></option>
     <option>${optionValues[0]}</option>
     <option>${optionValues[1]}</option>
     <option>${optionValues[2]}</option>
     <option>${optionValues[3]}</option>
     </select>`;
-  }
 
   inputs.classList.remove("show");
 
