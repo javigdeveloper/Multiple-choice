@@ -7,24 +7,42 @@ const inputs = document.getElementById("inputsId");
 const optionsBtn = document.getElementById("optionsBtn");
 const goToExercise = document.getElementById("goToExerciseId");
 const goToExerciseBtn = document.getElementById("goToExerciseBtn");
-// const newLine = document.getElementById("newLine");
 let clickedSpan = false;
 
 // add span for each word and br for new lines...
 const transformText = (str) => {
-  const singleSpace = str.split(" ");
-  const myHtmlArr = [];
-  singleSpace.forEach((el) => {
-    if (el.includes("\n")) {
-      let innerArr = el.split("\n");
-      innerArr.forEach((item) => {
-        item == "" ? myHtmlArr.push("<br>") : myHtmlArr.push(`<span>${item}</span><br>`);
-      });
-    } else {
-      myHtmlArr.push(`<span>${el}</span>`);
+  let myHtmlContent = "";
+  let myStr = str;
+  let initialLength = myStr.length;
+  let counter = 0;
+  let slicer = 0;
+
+  while (counter < initialLength) {
+    if (myStr[slicer] === " ") {
+      let newStr = myStr.slice(0, slicer);
+      myStr = myStr.slice(slicer + 1);
+      myHtmlContent = myHtmlContent.concat(`<span>${newStr}</span>&nbsp`);
+      slicer = -1;
+    } else if (myStr[slicer] === "\t") {
+      let newStr = myStr.slice(0, slicer);
+      myStr = myStr.slice(slicer + 1);
+      myHtmlContent = myHtmlContent.concat(`<span>${newStr}</span>&nbsp&nbsp&nbsp&nbsp`);
+      slicer = -1;
+    } else if (myStr[slicer] === "\n") {
+      let newStr = myStr.slice(0, slicer);
+      myStr = myStr.slice(slicer + 1);
+      myHtmlContent = myHtmlContent.concat(`<span>${newStr}</span><br>`);
+      slicer = -1;
     }
-  });
-  paragraph.innerHTML = myHtmlArr.join(" ");
+    if (counter === initialLength - 1) {
+      let newStr = myStr.slice(0, slicer + 1);
+      // myStr = myStr.slice(slicer + 1);
+      myHtmlContent = myHtmlContent.concat(`<span>${newStr}</span>`);
+    }
+    slicer++;
+    counter++;
+  }
+  paragraph.innerHTML = myHtmlContent;
 };
 
 // teacher controls button...
