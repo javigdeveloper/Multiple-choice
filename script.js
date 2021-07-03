@@ -53,20 +53,35 @@ teacherBtn.addEventListener("click", () => {
   instructions.innerText = "Click on a word if you want to add options";
 });
 
+let elementHeight;
+
 // when clicking a word...
 const changeSpan = (e) => {
+  // hide alternative options section...
   if (e.target.getAttribute("id") === "temporaryId" && clickedSpan) {
     e.target.removeAttribute("id");
     inputs.classList.remove("show");
     clickedSpan = false;
     return;
   }
+  // show alternative options section...
   if (e.target.nodeName === "SPAN" && !clickedSpan) {
     clickedSpan = true;
     e.target.setAttribute("id", "temporaryId");
     const correctInput = document.getElementById("correctInput");
     inputs.classList.add("show");
     correctInput.value = e.target.innerText;
+
+    // setting height of clicked element to go back later...
+    elementHeight = e.target.offsetTop;
+
+    // go to bottom of the page, where the alternative options section is...
+    const scrollable = document.documentElement.scrollHeight;
+    window.scrollTo({
+      top: scrollable,
+      left: 0,
+      behavior: "smooth",
+    });
   }
 };
 paragraph.addEventListener("click", changeSpan);
@@ -106,6 +121,13 @@ optionsBtn.addEventListener("click", () => {
 
   // add further instructions for teacher...
   goToExercise.classList.add("show");
+
+  // go back to window height of clicked element...
+  window.scrollTo({
+    top: elementHeight,
+    left: 0,
+    behavior: "smooth",
+  });
 });
 
 // button adds event listener to each select tag...

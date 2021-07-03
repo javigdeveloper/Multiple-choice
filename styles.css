@@ -1,6 +1,12 @@
 * {
   font-size: 22px;
 }
+body {
+  padding: 28px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhm-0og3knrN3wJyg4QTaiFFoyCPLuSvk5Fw&usqp=CAU);
+  background-size: cover;
+  border: 20px solid #c5ecc5;
+}
 .teacherControlsClass {
   margin: auto;
   width: 50%;
